@@ -156,7 +156,7 @@ class WsseAuthPlugin implements SubscriberInterface {
      */
     public function generateDigest($nonce, $createdAt, $password) {
 
-        return base64_encode(sha1(base64_decode($nonce) . $createdAt . $password, true));
+        return base64_encode(hash('sha256', base64_decode($nonce) . $createdAt . $password, true));
     } // end: generateDigest()
 
     /**
